@@ -5,7 +5,7 @@ metadata:
   namespace: auth
 spec:
   ingressClassName: nginx
-  tls:                        # ← AÑADIR ESTO
+  tls:
   - hosts:
     - podprompt.local
     secretName: podprompt-tls
@@ -13,7 +13,7 @@ spec:
   - host: podprompt.local
     http:
       paths:
-      - path: /
+      - path: /keycloak
         pathType: Prefix
         backend:
           service:
