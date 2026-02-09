@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keycloak-realm
+  namespace: auth
+data:
+  podprompt-realm.json: |-
+    {
+      "realm": "podprompt",
+      "enabled": true,
+      "clients": [
+        {
+          "clientId": "frontend",
+          "enabled": true,
+          "publicClient": true,
+          "redirectUris": [
+            "https://podprompt.local/*",
+            "https://localhost:5173/*"
+          ],
+          "webOrigins": [
+            "https://podprompt.local",
+            "https://localhost:5173"
+          ],
+          "standardFlowEnabled": true,
+          "directAccessGrantsEnabled": true
+        }
+      ],
+      "users": [
+        {
+          "username": "testuser",
+          "enabled": true,
+          "credentials": [
+            {
+              "type": "password",
+              "value": "test123",
+              "temporary": false
+            }
+          ]
+        }
+      ]
+    }

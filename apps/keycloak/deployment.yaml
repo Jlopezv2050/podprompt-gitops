@@ -17,10 +17,12 @@ spec:
       - name: keycloak
         image: quay.io/keycloak/keycloak:26.0
         args:
-        - start-dev
+        - start
         - --hostname-strict=false
         - --proxy-headers=xforwarded
         - --http-relative-path=/keycloak
+        - --http-enabled=true
+        - --import-realm
         env:
         - name: KEYCLOAK_ADMIN
           value: admin
@@ -28,3 +30,10 @@ spec:
           value: admin
         ports:
         - containerPort: 8080
+        volumeMounts:
+        - name: realm-config
+          mountPath: /opt/keycloak/data/import
+      volumes:
+      - name: realm-config
+        configMap:
+          name: keycloak-realm
