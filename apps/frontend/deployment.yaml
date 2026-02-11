@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: podprompt-frontend:latest
-        imagePullPolicy: Never
+        image: ghcr.io/jlopezv2050/podprompt-frontend:main-b845005
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
