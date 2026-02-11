@@ -22,7 +22,7 @@ spec:
         - --proxy-headers=xforwarded
         - --http-relative-path=/keycloak
         - --http-enabled=true
-        - --import-realm
+        # --import-realm  # Comentado: Importa manualmente al crear cluster para no sobreescribir usuarios
         env:
         - name: KEYCLOAK_ADMIN
           value: admin
